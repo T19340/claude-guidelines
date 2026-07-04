@@ -18,17 +18,29 @@ Anthropic 공식 [「Prompting Claude Fable 5」 가이드](https://platform.cla
 
 > "github.com/T19340/claude-guidelines 저장소의 CLAUDE.md를 내 사용자 지침(`~/.claude/CLAUDE.md`)으로 설치해줘"
 
-**방법 2 — 직접 실행 (gh CLI 로그인 상태에서):**
+**방법 2 — 한 줄 설치 (공개 저장소라 인증 불필요):**
+
+```powershell
+# Windows (PowerShell) — 기존 파일은 .bak으로 백업 후 덮어씀
+$d="$HOME\.claude\CLAUDE.md"; New-Item -ItemType Directory -Force (Split-Path $d)|Out-Null; if(Test-Path $d){Copy-Item $d "$d.bak" -Force}; irm https://raw.githubusercontent.com/T19340/claude-guidelines/main/CLAUDE.md -OutFile $d
+```
+
+```bash
+# macOS / Linux — 기존 파일은 .bak으로 백업 후 덮어씀
+d="$HOME/.claude/CLAUDE.md"; mkdir -p "$(dirname "$d")"; [ -f "$d" ] && cp "$d" "$d.bak"; curl -fsSL https://raw.githubusercontent.com/T19340/claude-guidelines/main/CLAUDE.md -o "$d"
+```
+
+**방법 3 — 클론 후 스크립트 실행:**
 
 ```powershell
 # Windows (PowerShell)
-gh repo clone T19340/claude-guidelines "$env:TEMP\claude-guidelines"
+git clone https://github.com/T19340/claude-guidelines "$env:TEMP\claude-guidelines"
 & "$env:TEMP\claude-guidelines\install.ps1"
 ```
 
 ```bash
 # macOS / Linux
-gh repo clone T19340/claude-guidelines /tmp/claude-guidelines
+git clone https://github.com/T19340/claude-guidelines /tmp/claude-guidelines
 bash /tmp/claude-guidelines/install.sh
 ```
 
