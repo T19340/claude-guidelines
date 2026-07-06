@@ -22,18 +22,6 @@ Anthropic이 공개한 [Prompting Claude Fable 5](https://platform.claude.com/do
 
 > github.com/T19340/claude-guidelines 저장소의 CLAUDE.md를 ~/.claude/CLAUDE.md로 설치해줘
 
-직접 powershell 명령어로 실행해도 괜찮습니다. 기존 파일이 있으면 `.bak`으로 백업한 뒤 덮어씁니다.
-
-```powershell
-# Windows (PowerShell)
-$d="$HOME\.claude\CLAUDE.md"; New-Item -ItemType Directory -Force (Split-Path $d)|Out-Null; if(Test-Path $d){Copy-Item $d "$d.bak" -Force}; irm https://raw.githubusercontent.com/T19340/claude-guidelines/main/CLAUDE.md -OutFile $d
-```
-
-```bash
-# macOS / Linux
-d="$HOME/.claude/CLAUDE.md"; mkdir -p "$(dirname "$d")"; [ -f "$d" ] && cp "$d" "$d.bak"; curl -fsSL https://raw.githubusercontent.com/T19340/claude-guidelines/main/CLAUDE.md -o "$d"
-```
-
 깃허브에 익숙하다면 저장소를 통째로 받아서 설치 스크립트를 돌려도 됩니다.
 
 ```powershell
@@ -46,6 +34,18 @@ git clone https://github.com/T19340/claude-guidelines "$env:TEMP\claude-guidelin
 # macOS / Linux
 git clone https://github.com/T19340/claude-guidelines /tmp/claude-guidelines
 bash /tmp/claude-guidelines/install.sh
+```
+회사에서는 방화벽 문제로 불가능하지만,  
+집에서는 직접 powershell 명령어로 실행해도 괜찮습니다. 기존 파일이 있으면 `.bak`으로 백업한 뒤 덮어씁니다.
+
+```powershell
+# Windows (PowerShell)
+$d="$HOME\.claude\CLAUDE.md"; New-Item -ItemType Directory -Force (Split-Path $d)|Out-Null; if(Test-Path $d){Copy-Item $d "$d.bak" -Force}; irm https://raw.githubusercontent.com/T19340/claude-guidelines/main/CLAUDE.md -OutFile $d
+```
+
+```bash
+# macOS / Linux
+d="$HOME/.claude/CLAUDE.md"; mkdir -p "$(dirname "$d")"; [ -f "$d" ] && cp "$d" "$d.bak"; curl -fsSL https://raw.githubusercontent.com/T19340/claude-guidelines/main/CLAUDE.md -o "$d"
 ```
 
 ## 지침을 고칠 때
